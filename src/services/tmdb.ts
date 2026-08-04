@@ -7,7 +7,8 @@ const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 // Read API Key from Vite env (supports standard v3 API key or v4 read token)
 const API_KEY = (import.meta.env.VITE_TMDB_API_KEY || '').trim();
 
-export const isDemoMode = true; // Forced to display only the user's custom list of 26 movies
+// Demo mode only when no TMDB API key/token is configured, so a real key actually hits the real API.
+export const isDemoMode = API_KEY.length === 0;
 
 // Helpers to build image URLs with fallbacks
 export const getPosterUrl = (path: string | null, size: 'w185' | 'w342' | 'w500' = 'w342'): string => {
