@@ -4,6 +4,8 @@ A modern, responsive Single Page Application (SPA) designed to let users explore
 
 Built with **React 18+**, **TypeScript**, **Tailwind CSS**, **Zustand**, and **TanStack Query (React Query) v5**.
 
+**Live demo:** https://movie-explorer-two-rose.vercel.app
+
 ---
 
 ## Features & Highlights
