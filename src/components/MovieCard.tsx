@@ -30,6 +30,13 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, onSelect }) => {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelect(movie);
+    }
+  };
+
   // Color coding for movie ratings
   const getRatingBadgeClass = (rating: number) => {
     if (rating >= 7) return 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20';
@@ -40,7 +47,11 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, onSelect }) => {
   return (
     <div
       onClick={() => onSelect(movie)}
-      className="group relative flex flex-col bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800 hover:border-indigo-500/30 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-300 animate-fade-in"
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${movie.title}`}
+      className="group relative flex flex-col bg-slate-900/40 hover:bg-slate-900/80 border border-slate-800 hover:border-indigo-500/30 rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 transition-all duration-300 animate-fade-in focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
     >
       {/* Poster Image */}
       <div className="relative aspect-[2/3] overflow-hidden bg-slate-950">
